@@ -3,31 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>March Madness 2026</title>
+    <title>March Madness Bracket</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1>🏀 March Madness 2026</h1>
-        
-        <div class="tabs">
-            <button class="tab-button active" data-sheet="Round of 64">Round of 64</button>
-            <button class="tab-button" data-sheet="Round of 32">Round of 32</button>
-            <button class="tab-button" data-sheet="Sweet Sixteen">Sweet Sixteen</button>
-            <button class="tab-button" data-sheet="Elite Eight">Elite Eight</button>
-            <button class="tab-button" data-sheet="Final Four">Final Four</button>
-        </div>
+    <div class="tabs">
+        <button class="tab" onclick="openTab(event, 'RoundOf64')">Round of 64</button>
+        <button class="tab" onclick="openTab(event, 'RoundOf32')">Round of 32</button>
+        <button class="tab" onclick="openTab(event, 'SweetSixteen')">Sweet Sixteen</button>
+        <button class="tab" onclick="openTab(event, 'EliteEight')">Elite Eight</button>
+        <button class="tab" onclick="openTab(event, 'FinalFour')">Final Four</button>
+    </div>
 
-        <div class="refresh-info">
-            <span id="last-updated">Loading...</span>
-            <span class="auto-refresh">🔄 Auto-refreshes every 5 minutes</span>
+    <div id="RoundOf64" class="tabcontent">
+        <h3>Round of 64</h3>
+        <div class="matchup">
+            <div class="team">Team A</div>
+            <div class="team">Team B</div>
         </div>
+        <!-- Add more matchups here -->
+    </div>
 
-        <div id="sheet-container">
-            <div class="loading">Loading data...</div>
+    <div id="RoundOf32" class="tabcontent" style="display:none;">
+        <h3>Round of 32</h3>
+        <div class="matchup">
+            <div class="team">Team C</div>
+            <div class="team">Team D</div>
+        </div>
+        <!-- Add more matchups here -->
+    </div>
+
+    <div id="SweetSixteen" class="tabcontent" style="display:none;">
+        <h3>Sweet Sixteen</h3>
+        <div class="matchup">
+            <div class="team">Team E</div>
+            <div class="team">Team F</div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="EliteEight" class="tabcontent" style="display:none;">
+        <h3>Elite Eight</h3>
+        <div class="matchup">
+            <div class="team">Team G</div>
+            <div class="team">Team H</div>
+        </div>
+    </div>
+
+    <div id="FinalFour" class="tabcontent" style="display:none;">
+        <h3>Final Four</h3>
+        <div class="matchup">
+            <div class="team">Team I</div>
+            <div class="team">Team J</div>
+        </div>
+    </div>
+
+    <script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tab;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tab = document.getElementsByClassName("tab");
+        for (i = 0; i < tab.length; i++) {
+            tab[i].className = tab[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
 </body>
 </html>
