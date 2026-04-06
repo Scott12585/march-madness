@@ -73,6 +73,22 @@ function getValue(row, colIdx) {
 function renderMatchups(matchups) {
     let html = '<table style="width: 100%; border-collapse: collapse;"><tbody>';
     
+    // Header row
+    html += `
+        <tr style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: bold;">
+            <th style="padding: 12px; text-align: center; border-right: 1px solid #555;">Seed</th>
+            <th style="padding: 12px; text-align: center; border-right: 1px solid #555;">College</th>
+            <th style="padding: 12px; text-align: center; border-right: 1px solid #555;">Name</th>
+            <th style="padding: 12px; text-align: center; border-right: 1px solid #555;">Spread</th>
+            <th colspan="3" style="padding: 12px; text-align: center; border-right: 1px solid #555;">Score</th>
+            <th style="padding: 12px; text-align: center; border-right: 1px solid #555;">Spread</th>
+            <th style="padding: 12px; text-align: center; border-right: 1px solid #555;">Name</th>
+            <th style="padding: 12px; text-align: center; border-right: 1px solid #555;">College</th>
+            <th style="padding: 12px; text-align: center;">Seed</th>
+        </tr>
+    `;
+    
+    // Data rows
     matchups.forEach((m, i) => {
         html += `
             <tr style="border-bottom: 1px solid #ddd;">
