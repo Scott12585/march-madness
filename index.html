@@ -3,75 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>March Madness Bracket</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>East Bracket</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        h1 { text-align: center; margin-bottom: 20px; }
+        .matchup { background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd; }
+        .team { padding: 10px; background: white; margin: 5px 0; border-radius: 4px; }
+        #sheet-container { padding: 20px; }
+        .loading { text-align: center; font-size: 18px; color: #667eea; }
+        .error { color: red; }
+    </style>
 </head>
 <body>
-    <div class="tabs">
-        <button class="tab" onclick="openTab(event, 'RoundOf64')">Round of 64</button>
-        <button class="tab" onclick="openTab(event, 'RoundOf32')">Round of 32</button>
-        <button class="tab" onclick="openTab(event, 'SweetSixteen')">Sweet Sixteen</button>
-        <button class="tab" onclick="openTab(event, 'EliteEight')">Elite Eight</button>
-        <button class="tab" onclick="openTab(event, 'FinalFour')">Final Four</button>
-    </div>
-
-    <div id="RoundOf64" class="tabcontent">
-        <h3>Round of 64</h3>
-        <div class="matchup">
-            <div class="team">Team A</div>
-            <div class="team">Team B</div>
-        </div>
-        <!-- Add more matchups here -->
-    </div>
-
-    <div id="RoundOf32" class="tabcontent" style="display:none;">
-        <h3>Round of 32</h3>
-        <div class="matchup">
-            <div class="team">Team C</div>
-            <div class="team">Team D</div>
-        </div>
-        <!-- Add more matchups here -->
-    </div>
-
-    <div id="SweetSixteen" class="tabcontent" style="display:none;">
-        <h3>Sweet Sixteen</h3>
-        <div class="matchup">
-            <div class="team">Team E</div>
-            <div class="team">Team F</div>
+    <div class="container">
+        <h1>🏀 East Bracket</h1>
+        <div id="sheet-container">
+            <div class="loading">Loading bracket data...</div>
         </div>
     </div>
-
-    <div id="EliteEight" class="tabcontent" style="display:none;">
-        <h3>Elite Eight</h3>
-        <div class="matchup">
-            <div class="team">Team G</div>
-            <div class="team">Team H</div>
-        </div>
-    </div>
-
-    <div id="FinalFour" class="tabcontent" style="display:none;">
-        <h3>Final Four</h3>
-        <div class="matchup">
-            <div class="team">Team I</div>
-            <div class="team">Team J</div>
-        </div>
-    </div>
-
-    <script>
-    function openTab(evt, tabName) {
-        var i, tabcontent, tab;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tab = document.getElementsByClassName("tab");
-        for (i = 0; i < tab.length; i++) {
-            tab[i].className = tab[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
