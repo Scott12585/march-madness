@@ -4,19 +4,10 @@ const SHEET_ID = '11lGymWUKkBVr1UKjsdUNKSsMw2O9NGDpJVU6_6IaFHs';
 // East Bracket configuration
 const EAST_CONFIG = {
     sheetName: 'Round of 64',
-    matchupRows: [11, 14, 17, 20, 23, 26, 29, 32], // 0-indexed rows where matchups are
+    matchupRows: [11, 14, 17, 20, 23, 26, 29, 32],
     columns: {
-        seed1: 3,      // D
-        college1: 5,   // F
-        spread1: 6,    // G
-        name1: 7,      // H
-        score1: 9,     // J
-        winner: 12,    // M
-        score2: 14,    // O
-        name2: 16,     // Q
-        spread2: 17,   // R
-        college2: 18,  // S
-        seed2: 20      // U
+        seed1: 3, college1: 5, spread1: 6, name1: 7, score1: 9,
+        winner: 12, score2: 14, name2: 16, spread2: 17, college2: 18, seed2: 20
     }
 };
 
@@ -26,7 +17,7 @@ async function loadEastBracket() {
     const container = document.getElementById('sheet-container');
     
     try {
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/'${EAST_CONFIG.sheetName}'!A:U?key=${API_KEY}`;
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/Round%20of%2064!A:U?key=${API_KEY}`;
         const response = await fetch(url);
         
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -39,7 +30,6 @@ async function loadEastBracket() {
             return;
         }
         
-        // Parse matchups
         const matchups = [];
         for (let rowIdx of EAST_CONFIG.matchupRows) {
             if (rowIdx < values.length) {
@@ -48,7 +38,6 @@ async function loadEastBracket() {
             }
         }
         
-        // Render
         container.innerHTML = renderMatchups(matchups);
         
     } catch (error) {
