@@ -71,13 +71,26 @@ function getValue(row, colIdx) {
 }
 
 function renderMatchups(matchups) {
-    return matchups.map((m, i) => `
-        <div class="matchup">
-            <strong>Matchup ${i + 1}</strong>
-            <div class="team"><strong>${m.seed1}</strong> ${m.college1} - ${m.name1} (${m.spread1}) | Score: ${m.score1}</div>
-            <div style="text-align: center; font-weight: bold; color: #667eea;">vs</div>
-            <div class="team"><strong>${m.seed2}</strong> ${m.college2} - ${m.name2} (${m.spread2}) | Score: ${m.score2}</div>
-            ${m.winner ? `<div style="text-align: center; color: green; font-weight: bold;">Winner: ${m.winner}</div>` : ''}
-        </div>
-    `).join('');
+    let html = '<table style="width: 100%; border-collapse: collapse;"><tbody>';
+    
+    matchups.forEach((m, i) => {
+        html += `
+            <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee;">${m.seed1}</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee;">${m.college1}</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee;">${m.name1}</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee;">${m.spread1}</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee; font-weight: bold;">${m.score1}</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee; font-weight: bold; color: #667eea;">VS</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee; font-weight: bold;">${m.score2}</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee;">${m.spread2}</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee;">${m.name2}</td>
+                <td style="padding: 10px; text-align: center; border-right: 1px solid #eee;">${m.college2}</td>
+                <td style="padding: 10px; text-align: center;">${m.seed2}</td>
+            </tr>
+        `;
+    });
+    
+    html += '</tbody></table>';
+    return html;
 }
